@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://es707xdjqxjo"]
+
+[ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_8fnln"]
+[ext_resource type="Script" path="res://population_manager.gd" id="2_u6bo3"]
+[ext_resource type="Script" path="res://game_manager.gd" id="3_wb6ol"]
+[ext_resource type="Script" path="res://population_increase_manager.gd" id="4_rux1o"]
+[ext_resource type="Script" path="res://dice_roller.gd" id="5_5bo2o"]
+[ext_resource type="Script" path="res://global_event_manager.gd" id="5_h6wkh"]
+[ext_resource type="Script" path="res://population_ui.gd" id="7_iwauk"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(539, 282)
+scale = Vector2(0.12069, 0.12069)
+texture = ExtResource("1_8fnln")
+
+[node name="PopulationManager" type="Node2D" parent="."]
+script = ExtResource("2_u6bo3")
+
+[node name="GlobalEventManager" type="Node" parent="."]
+script = ExtResource("5_h6wkh")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("3_wb6ol")
+
+[node name="PopulationIncreaseManager" type="Node" parent="GameManager"]
+script = ExtResource("4_rux1o")
+
+[node name="DiceRoller" type="Node2D" parent="."]
+script = ExtResource("5_5bo2o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="PupulationIncreasePhaseButton" type="Button" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "PupulationIncreasePhaseButton"
+
+[node name="PopulationUI" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("7_iwauk")
+
+[node name="Population" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PopulationUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/PopulationUI/Population"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Population"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/PopulationUI/Population"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[node name="Agriculture" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PopulationUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/PopulationUI/Agriculture"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Population"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/PopulationUI/Agriculture"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[connection signal="agriculture_value_changed" from="PopulationManager" to="GlobalEventManager" method="emit_agriculture_value_changed"]
+[connection signal="population_value_changed" from="PopulationManager" to="GlobalEventManager" method="emit_population_value_changed"]
+[connection signal="agriculture_value_changed" from="GlobalEventManager" to="CanvasLayer/MarginContainer/PopulationUI" method="agriculture_value_changed"]
+[connection signal="population_increased" from="GlobalEventManager" to="PopulationManager" method="increase_population"]
+[connection signal="population_value_changed" from="GlobalEventManager" to="CanvasLayer/MarginContainer/PopulationUI" method="populate_value_changed"]
+[connection signal="population_increased" from="GameManager/PopulationIncreaseManager" to="GlobalEventManager" method="emit_population_increased"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/PupulationIncreasePhaseButton" to="GameManager" method="phase_population_increase"]
