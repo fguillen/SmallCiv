@@ -1,21 +1,19 @@
 # -- 01 @tool
 # -- 02 class_name
-class_name PhaseManager
-
+class_name GainCultureManager
 # -- 03 extends
-extends Node
+extends PhaseManager
 
 # -- 04 # docstring
 #
 # -- 05 signals
+signal pick_one_culture()
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
 # -- 09 public variables
 # -- 10 private variables
-var _game_manager : GameManager
-var _data_manager : DataManager
-
 # -- 11 onready variables
 #
 # -- 12 optional built-in virtual _init method
@@ -23,12 +21,19 @@ var _data_manager : DataManager
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func setup(game_manager: GameManager):
-	_game_manager = game_manager
-	_data_manager = game_manager.data_manager
-	
-	
+func perform():
+	_gain_culture()
+		
+		
 # -- 17 private methods
+func _gain_culture():
+	var die_roll = DiceRoller.roll("1d20")
+	if die_roll >= 16:
+		print("GainCultureManager.pick_up_culture()")
+		pick_one_culture.emit()
+	else:
+		var culture = CulturesTable.DATA.get(die_roll)
+		_data_manager.gain_culture(culture)
 # -- 18 signal listeners
 # -- 19 innerclasses
 

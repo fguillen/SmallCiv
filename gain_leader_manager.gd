@@ -28,9 +28,9 @@ func perform():
 		
 # -- 17 private methods
 func _gain_leader():
-	var die_roll = DiceRoller.roll("1d%d" % TableLeaders.DATA.size())
-	var leader = TableLeaders.DATA.get(die_roll)
-	_population_manager.gain_leader(leader)
+	var die_roll = DiceRoller.roll("1d%d" % LeadersTable.DATA.size())
+	var leader = LeadersTable.DATA.get(die_roll)
+	_data_manager.gain_leader(leader)
 		
 # -- 18 signal listeners
 # -- 19 innerclasses

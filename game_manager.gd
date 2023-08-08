@@ -10,7 +10,7 @@ extends Node
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
-@export var population_manager : PopulationManager
+@export var data_manager : DataManager
 
 # -- 09 public variables
 var turn := 0
@@ -18,8 +18,13 @@ var turn := 0
 
 # -- 10 private variables
 # -- 11 onready variables
+@onready var setup_manager = $SetupManager
+@onready var gain_culture_manager = $GainCultureManager
 @onready var population_increase_manager = $PopulationIncreaseManager
 @onready var population_distribution_manager = $PopulationDistributionManager
+@onready var gain_leader_manager = $GainLeaderManager
+@onready var harvest_manager = $HarvestManager
+
 
 #
 # -- 12 optional built-in virtual _init method
@@ -77,8 +82,8 @@ func phase_income():
 
 # -- 17 private methods
 func _setup():
-	population_increase_manager.setup(population_manager)
-	population_distribution_manager.setup(population_manager)
+	population_increase_manager.setup(self)
+	population_distribution_manager.setup(self)
 	
 # -- 18 signal listeners
 # -- 19 innerclasses

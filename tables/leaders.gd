@@ -1,9 +1,9 @@
 # -- 01 @tool
 # -- 02 class_name
-class_name TableLeaders
+class_name LeadersTable
 
 # -- 03 extends
-extends Node
+extends Resource
 
 # -- 04 # docstring
 #

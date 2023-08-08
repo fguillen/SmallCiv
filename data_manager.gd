@@ -1,6 +1,6 @@
 # -- 01 @tool
 # -- 02 class_name
-class_name PopulationManager
+class_name DataManager
 # -- 03 extends
 extends Node2D
 
@@ -107,9 +107,29 @@ func gain_leader(leader: Dictionary):
 	_leaders.append(leader)
 	leader_gained.emit(leader)
 	
+
+func get_total_population() -> int:
+	return _total_population
 	
+
 func get_agriculture() -> int:
 	return _population.agriculture
+
+
+func get_army() -> int:
+	return _population.army
+	
+	
+func get_trade() -> int:
+	return _population.trade
+	
+	
+func get_labor() -> int:
+	return _population.labor
+	
+	
+func get_schoolars() -> int:
+	return _population.schoolars
 	
 	
 # -- 17 private methods

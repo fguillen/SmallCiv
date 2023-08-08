@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://es707xdjqxjo"]
+[gd_scene load_steps=13 format=3 uid="uid://es707xdjqxjo"]
 
 [ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_8fnln"]
-[ext_resource type="Script" path="res://population_manager.gd" id="2_u6bo3"]
+[ext_resource type="Script" path="res://data_manager.gd" id="2_x8r2w"]
 [ext_resource type="Script" path="res://game_manager.gd" id="3_wb6ol"]
+[ext_resource type="Script" path="res://gain_culture_manager.gd" id="4_0bpci"]
+[ext_resource type="Script" path="res://setup_manager.gd" id="4_115rn"]
 [ext_resource type="Script" path="res://population_increase_manager.gd" id="4_rux1o"]
 [ext_resource type="Script" path="res://dice_roller.gd" id="5_5bo2o"]
 [ext_resource type="Script" path="res://gain_leader_manager.gd" id="6_ch6ho"]
 [ext_resource type="Script" path="res://population_distribution_manager.gd" id="6_tpvay"]
 [ext_resource type="Script" path="res://harvest_manager.gd" id="7_82km4"]
 [ext_resource type="Script" path="res://population_ui.gd" id="7_iwauk"]
+[ext_resource type="Script" path="res://upkeep_manager.gd" id="10_sqvek"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,12 +20,17 @@ position = Vector2(539, 282)
 scale = Vector2(0.12069, 0.12069)
 texture = ExtResource("1_8fnln")
 
-[node name="PopulationManager" type="Node2D" parent="."]
-script = ExtResource("2_u6bo3")
+[node name="DataManager" type="Node2D" parent="."]
+script = ExtResource("2_x8r2w")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("population_manager")]
+[node name="GameManager" type="Node" parent="."]
 script = ExtResource("3_wb6ol")
-population_manager = NodePath("../PopulationManager")
+
+[node name="SetupManager" type="Node" parent="GameManager"]
+script = ExtResource("4_115rn")
+
+[node name="GainCultureManager" type="Node" parent="GameManager"]
+script = ExtResource("4_0bpci")
 
 [node name="PopulationIncreaseManager" type="Node" parent="GameManager"]
 script = ExtResource("4_rux1o")
@@ -35,6 +43,9 @@ script = ExtResource("6_ch6ho")
 
 [node name="HarvestManager" type="Node" parent="GameManager"]
 script = ExtResource("7_82km4")
+
+[node name="UpkeepManager" type="Node" parent="GameManager"]
+script = ExtResource("10_sqvek")
 
 [node name="DiceRoller" type="Node2D" parent="."]
 script = ExtResource("5_5bo2o")
