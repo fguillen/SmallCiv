@@ -27,13 +27,13 @@ func perform():
 		
 # -- 17 private methods
 func _gain_culture():
-	var die_roll = DiceRoller.roll("1d20")
+	var die_roll = DiceRoller.roll("1d20").result
 	if die_roll >= 16:
 		print("GainCultureManager.pick_up_culture()")
 		pick_one_culture.emit()
 	else:
 		var culture = CulturesTable.DATA.get(die_roll)
-		_data_manager.gain_culture(culture)
+		_data_manager.set_culture(culture)
 # -- 18 signal listeners
 # -- 19 innerclasses
 

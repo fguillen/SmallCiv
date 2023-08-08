@@ -42,6 +42,10 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func phase_setup():
+	setup_manager.perform()
+	
+	
 func phase_population_increase():
 	population_increase_manager.perform()
 	
@@ -90,8 +94,18 @@ func phase_income():
 
 # -- 17 private methods
 func _setup():
+	setup_manager.setup(self)
+	gain_culture_manager.setup(self)
 	population_increase_manager.setup(self)
 	population_distribution_manager.setup(self)
+	gain_leader_manager.setup(self)
+	harvest_manager.setup(self)
+	upkeep_manager.setup(self)
+#	trade_manager_wip.setup(self)
+#	war_manager_wip.setup(self)
+#	build_manager_wip.setup(self)
+	research_manager.setup(self)
+	income_manager.setup(self)
 	
 # -- 18 signal listeners
 # -- 19 innerclasses

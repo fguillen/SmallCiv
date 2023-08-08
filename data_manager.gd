@@ -7,6 +7,8 @@ extends Node2D
 # -- 04 # docstring
 #
 # -- 05 signals
+signal culture_set(value: String)
+
 signal total_population_value_changed(value: int)
 signal agriculture_value_changed(value: int)
 signal army_value_changed(value: int)
@@ -27,6 +29,8 @@ signal advance_gained(advance: Dictionary)
 # -- 08 exported variables
 # -- 09 public variables
 # -- 10 private variables
+
+var _culture : Dictionary
 
 var _total_population := 0
 
@@ -52,6 +56,11 @@ var _gold := 0
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func set_culture(value: Dictionary):
+	_culture = value
+	culture_set.emit(value)
+	
+	
 func increase_population(amount: int):
 	_total_population += amount
 	modify("agriculture", amount)

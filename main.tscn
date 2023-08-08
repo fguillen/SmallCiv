@@ -78,7 +78,16 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="PupulationIncreasePhaseButton" type="Button" parent="CanvasLayer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="SetupPhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "SetupPhaseButton"
+
+[node name="PupulationIncreasePhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -181,4 +190,5 @@ size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/PupulationIncreasePhaseButton" to="GameManager" method="phase_population_increase"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/SetupPhaseButton" to="GameManager" method="phase_setup"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PupulationIncreasePhaseButton" to="GameManager" method="phase_population_increase"]
