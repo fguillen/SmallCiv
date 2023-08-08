@@ -1,6 +1,6 @@
 # -- 01 @tool
 # -- 02 class_name
-class_name PopulationIncreaseManager
+class_name PopulationDistributionManager
 
 # -- 03 extends
 extends PhaseManager
@@ -20,9 +20,9 @@ extends PhaseManager
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods	
-func perform():
-	var amount = max(DiceRoller.roll("1d6-2").result, 0)
-	_population_manager.increase_population(amount)
+func move(from: String, to: String, amount: int):
+	_population_manager.modify(from, -amount)
+	_population_manager.modify(to, amount)
 	
 # -- 17 private methods
 # -- 18 signal listeners
