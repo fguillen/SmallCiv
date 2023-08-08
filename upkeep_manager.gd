@@ -20,14 +20,18 @@ extends PhaseManager
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform():
+	# Grain
 	var num_population = _data_manager.get_total_population()
 	_data_manager.modify_grain(-num_population)
 	
+	# Gold
 	var num_army = _data_manager.get_army()
 	_data_manager.modify_gold(-num_army)
 
 	# TODO: if upkeep is not met, those population are lost
 	# TODO: Leader dies of old age
+	
+	
 # -- 17 private methods
 # -- 18 signal listeners
 # -- 19 innerclasses

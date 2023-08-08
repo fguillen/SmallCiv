@@ -13,6 +13,14 @@ signal trade_value_changed(value: int)
 signal labor_value_changed(value: int)
 signal scholars_value_changed(value: int)
 
+signal lider_gained(leader: Dictionary)
+signal lider_removed(leader: Dictionary)
+
+signal grain_changed(value: int)
+signal gold_changed(value: int)
+
+signal advance_added(advance: Dictionary)
+
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables

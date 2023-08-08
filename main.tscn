@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://es707xdjqxjo"]
+[gd_scene load_steps=15 format=3 uid="uid://es707xdjqxjo"]
 
 [ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_8fnln"]
 [ext_resource type="Script" path="res://data_manager.gd" id="2_x8r2w"]
@@ -10,8 +10,10 @@
 [ext_resource type="Script" path="res://gain_leader_manager.gd" id="6_ch6ho"]
 [ext_resource type="Script" path="res://population_distribution_manager.gd" id="6_tpvay"]
 [ext_resource type="Script" path="res://harvest_manager.gd" id="7_82km4"]
-[ext_resource type="Script" path="res://population_ui.gd" id="7_iwauk"]
 [ext_resource type="Script" path="res://upkeep_manager.gd" id="10_sqvek"]
+[ext_resource type="Script" path="res://research_manager.gd" id="11_66r1r"]
+[ext_resource type="Script" path="res://income_manager.gd" id="12_c4jc5"]
+[ext_resource type="Script" path="res://data_ui.gd" id="14_bmd2b"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,8 +25,9 @@ texture = ExtResource("1_8fnln")
 [node name="DataManager" type="Node2D" parent="."]
 script = ExtResource("2_x8r2w")
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("data_manager")]
 script = ExtResource("3_wb6ol")
+data_manager = NodePath("../DataManager")
 
 [node name="SetupManager" type="Node" parent="GameManager"]
 script = ExtResource("4_115rn")
@@ -46,6 +49,18 @@ script = ExtResource("7_82km4")
 
 [node name="UpkeepManager" type="Node" parent="GameManager"]
 script = ExtResource("10_sqvek")
+
+[node name="TradeManager_WIP" type="Node" parent="GameManager"]
+
+[node name="WarManager_WIP" type="Node" parent="GameManager"]
+
+[node name="BuildManager_WIP" type="Node" parent="GameManager"]
+
+[node name="ResearchManager" type="Node" parent="GameManager"]
+script = ExtResource("11_66r1r")
+
+[node name="IncomeManager" type="Node" parent="GameManager"]
+script = ExtResource("12_c4jc5")
 
 [node name="DiceRoller" type="Node2D" parent="."]
 script = ExtResource("5_5bo2o")
@@ -69,37 +84,98 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "PupulationIncreasePhaseButton"
 
-[node name="PopulationUI" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="DataUI" type="VBoxContainer" parent="CanvasLayer/MarginContainer" node_paths=PackedStringArray("data_manager")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
-script = ExtResource("7_iwauk")
+script = ExtResource("14_bmd2b")
+data_manager = NodePath("../../../DataManager")
 
-[node name="Population" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PopulationUI"]
+[node name="Population" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/PopulationUI/Population"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Population"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/PopulationUI/Population"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Agriculture" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PopulationUI"]
+[node name="Agriculture" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/PopulationUI/Agriculture"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Agriculture"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Population"
+text = "Agriculture"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/PopulationUI/Agriculture"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Agriculture"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[node name="Grain" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Grain"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Grain"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Grain"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[node name="Gold" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Gold"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gold"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Gold"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[node name="Leaders" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Leaders"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Leaders"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Leaders"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[node name="Advances" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Advances"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Advances"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Advances"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"

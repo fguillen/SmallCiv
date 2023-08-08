@@ -22,7 +22,7 @@ extends PhaseManager
 # -- 16 public methods	
 func perform():
 	var amount = max(DiceRoller.roll("1d6-2").result, 0)
-	_population_manager.increase_population(amount)
+	_data_manager.increase_population(amount)
 	
 # -- 17 private methods
 # -- 18 signal listeners

@@ -21,8 +21,10 @@ extends PhaseManager
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods	
 func move(from: String, to: String, amount: int):
-	_population_manager.modify(from, -amount)
-	_population_manager.modify(to, amount)
+	_data_manager.modify(from, -amount)
+	_data_manager.modify(to, amount)
+	
+	# TODO: raise an army cost +2 Gold
 	
 # -- 17 private methods
 # -- 18 signal listeners

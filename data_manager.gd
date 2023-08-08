@@ -15,9 +15,12 @@ signal labor_value_changed(value: int)
 signal scholars_value_changed(value: int)
 
 signal leader_gained(leader: Dictionary)
+signal leader_removed(leader: Dictionary)
 
-signal grain_value_changed(value: int)
-signal gold_value_changed(value: int)
+signal grain_changed(value: int)
+signal gold_changed(value: int)
+
+signal advance_gained(advance: Dictionary)
 
 # -- 06 enums
 # -- 07 constants
@@ -36,6 +39,7 @@ var _population := {
 }
 
 var _leaders : Array[Dictionary]
+var _advances : Array[Dictionary]
 
 var _grain := 0
 var _gold := 0
@@ -95,17 +99,22 @@ func modify_scholars(amount: int):
 	
 func modify_grain(amount: int):
 	_grain += amount
-	grain_value_changed.emit(_grain)
+	grain_changed.emit(_grain)
 	
 
 func modify_gold(amount: int):
 	_gold += amount
-	gold_value_changed.emit(_gold)
+	gold_changed.emit(_gold)
 	
 	
 func gain_leader(leader: Dictionary):
 	_leaders.append(leader)
 	leader_gained.emit(leader)
+	
+	
+func gain_advance(advance: Dictionary):
+	_advances.append(advance)
+	advance_gained.emit(advance)
 	
 
 func get_total_population() -> int:
@@ -131,6 +140,13 @@ func get_labor() -> int:
 func get_schoolars() -> int:
 	return _population.schoolars
 	
+	
+func get_leaders() -> Array:
+	return _leaders
+	
+	
+func get_leaders_by_kind(kind: String):
+	return _leaders.filter(func(e): e.kind == kind)
 	
 # -- 17 private methods
 # -- 18 signal listeners

@@ -12,11 +12,11 @@ extends Resource
 # -- 07 constants
 const DATA = {
 	1 : {
-		"type" : "Rules",
+		"kind" : "Rules",
 		"effect" : "Gold: +1d6 per turn"
 	},
 	2 : {
-		"type" : "General",
+		"kind" : "General",
 		"effect" : "Battle: +1roll"
 	}
 }

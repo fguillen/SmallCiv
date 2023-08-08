@@ -18,12 +18,19 @@ var turn := 0
 
 # -- 10 private variables
 # -- 11 onready variables
-@onready var setup_manager = $SetupManager
-@onready var gain_culture_manager = $GainCultureManager
-@onready var population_increase_manager = $PopulationIncreaseManager
-@onready var population_distribution_manager = $PopulationDistributionManager
-@onready var gain_leader_manager = $GainLeaderManager
-@onready var harvest_manager = $HarvestManager
+@onready var setup_manager : SetupManager = $SetupManager
+@onready var gain_culture_manager : GainCultureManager = $GainCultureManager
+@onready var population_increase_manager : PopulationIncreaseManager = $PopulationIncreaseManager
+@onready var population_distribution_manager : PopulationDistributionManager= $PopulationDistributionManager
+@onready var gain_leader_manager : GainLeaderManager = $GainLeaderManager
+@onready var harvest_manager : HarvestManager = $HarvestManager
+@onready var upkeep_manager : UpkeepManager = $UpkeepManager
+@onready var trade_manager_wip = $TradeManager_WIP
+@onready var war_manager_wip = $WarManager_WIP
+@onready var build_manager_wip = $BuildManager_WIP
+@onready var research_manager : ResearchManager = $ResearchManager
+@onready var income_manager : IncomeManager = $IncomeManager
+
 
 
 #
@@ -43,20 +50,21 @@ func phase_population_distribution():
 	pass
 	
 
-func phase_leader_gain():
-	pass
+func phase_gain_leader():
+	gain_leader_manager.perform()
 	
 	
 func phase_harvest():
-	pass
+	harvest_manager.perform()
 	
 
 func phase_disaster_check():
 	pass
+	# TODO
 	
 
 func phase_upkeep():
-	pass
+	upkeep_manager.perform()
 	
 
 func phase_war():
@@ -72,11 +80,11 @@ func phase_build():
 	
 	
 func phase_research():
-	pass
+	research_manager.perform()
 	
 	
 func phase_income():
-	pass
+	income_manager.perform()
 	
 	
 
