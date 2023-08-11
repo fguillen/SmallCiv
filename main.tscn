@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://es707xdjqxjo"]
+[gd_scene load_steps=16 format=3 uid="uid://es707xdjqxjo"]
 
 [ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_8fnln"]
 [ext_resource type="Script" path="res://data_manager.gd" id="2_x8r2w"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://dice_roller.gd" id="5_5bo2o"]
 [ext_resource type="Script" path="res://gain_leader_manager.gd" id="6_ch6ho"]
 [ext_resource type="Script" path="res://population_distribution_manager.gd" id="6_tpvay"]
+[ext_resource type="Script" path="res://resource_manager.gd" id="7_65p88"]
 [ext_resource type="Script" path="res://harvest_manager.gd" id="7_82km4"]
 [ext_resource type="Script" path="res://upkeep_manager.gd" id="10_sqvek"]
 [ext_resource type="Script" path="res://research_manager.gd" id="11_66r1r"]
@@ -37,6 +38,9 @@ script = ExtResource("4_0bpci")
 
 [node name="PopulationIncreaseManager" type="Node" parent="GameManager"]
 script = ExtResource("4_rux1o")
+
+[node name="ResourceManager" type="Node" parent="GameManager"]
+script = ExtResource("7_65p88")
 
 [node name="PopulationDistributionManager" type="Node" parent="GameManager"]
 script = ExtResource("6_tpvay")

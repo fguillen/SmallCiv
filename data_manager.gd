@@ -16,6 +16,10 @@ signal trade_value_changed(value: int)
 signal labor_value_changed(value: int)
 signal scholars_value_changed(value: int)
 
+signal natural_resource_gained(natural_resource: Dictionary)
+signal manufactured_resource_gained(manufactured_resource: Dictionary)
+
+
 signal leader_gained(leader: Dictionary)
 signal leader_removed(leader: Dictionary)
 
@@ -42,8 +46,11 @@ var _population := {
 	"scholars" = 0
 }
 
+var _natural_resources : Array[Dictionary]
+var _manufactured_resources : Array[Dictionary]
 var _leaders : Array[Dictionary]
 var _advances : Array[Dictionary]
+
 
 var _grain := 0
 var _gold := 0
@@ -116,6 +123,16 @@ func modify_gold(amount: int):
 	gold_changed.emit(_gold)
 	
 	
+func gain_natural_resource(natural_resource: Dictionary):
+	_natural_resources.append(natural_resource)
+	natural_resource_gained.emit(natural_resource)
+	
+
+func manufactured_resource(manufactured_resource: Dictionary):
+	_manufactured_resources.append(manufactured_resource)
+	manufactured_resource_gained.emit(manufactured_resource)
+
+
 func gain_leader(leader: Dictionary):
 	_leaders.append(leader)
 	leader_gained.emit(leader)
