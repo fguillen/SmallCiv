@@ -20,15 +20,17 @@ extends PhaseManager
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform():
-	var die_roll = DiceRoller.roll("1d20")
+	var die_roll = DiceRoller.roll("1d10").result
 	
 	match die_roll:
-		[1, 2, 3]:
+		1, 2, 3:
 			pass
-		[4, 5]:
+		4, 5:
 			_choose_manufatured_resource()
-		[6, 7, 8, 9, 10]:
+		6, 7, 8, 9, 10:
 			_gain_random_natural_resource()
+		_:
+			print("ResourceManager.perform() no valid option: ", die_roll)
 			
 			
 
@@ -41,8 +43,8 @@ func _choose_manufatured_resource():
 	
 func _gain_random_natural_resource():
 	# TODO: if 1d3 == 3 pick_one
-	var die_roll = DiceRoller.roll("1d%d" % NaturalResourcesTable.DATA.size())
-	var natura_resource = NaturalResourcesTable.DATA[die_roll-1]
+	var die_roll = DiceRoller.roll("1d%d" % NaturalResourcesTable.DATA.size()).result
+	var natural_resource = NaturalResourcesTable.DATA[die_roll-1]
 	_data_manager.gain_natural_resource(natural_resource)
 	
 	

@@ -19,7 +19,6 @@ signal scholars_value_changed(value: int)
 signal natural_resource_gained(natural_resource: Dictionary)
 signal manufactured_resource_gained(manufactured_resource: Dictionary)
 
-
 signal leader_gained(leader: Dictionary)
 signal leader_removed(leader: Dictionary)
 
@@ -124,11 +123,12 @@ func modify_gold(amount: int):
 	
 	
 func gain_natural_resource(natural_resource: Dictionary):
+	print("XXX: gain_natural_resource: ", natural_resource)
 	_natural_resources.append(natural_resource)
 	natural_resource_gained.emit(natural_resource)
 	
 
-func manufactured_resource(manufactured_resource: Dictionary):
+func gain_manufactured_resource(manufactured_resource: Dictionary):
 	_manufactured_resources.append(manufactured_resource)
 	manufactured_resource_gained.emit(manufactured_resource)
 
@@ -171,8 +171,8 @@ func get_leaders() -> Array:
 	return _leaders
 	
 	
-func get_leaders_by_kind(kind: String):
-	return _leaders.filter(func(e): e.kind == kind)
+func get_leaders_by_kind(kind: String) -> Array[Dictionary]:
+	return _leaders.filter(func(e): return e.kind == kind)
 	
 # -- 17 private methods
 # -- 18 signal listeners

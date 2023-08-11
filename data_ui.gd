@@ -16,10 +16,13 @@ extends Node
 # -- 11 onready variables
 @onready var population_value_label = %Population/ValueLabel
 @onready var agriculture_value_label = %Agriculture/ValueLabel
-@onready var grain_value_label = $Grain/ValueLabel
-@onready var gold_value_label = $Gold/ValueLabel
-@onready var leaders_value_label = $Leaders/ValueLabel
-@onready var advances_value_label = $Advances/ValueLabel
+@onready var grain_value_label = %Grain/ValueLabel
+@onready var gold_value_label = %Gold/ValueLabel
+@onready var leaders_value_label = %Leaders/ValueLabel
+@onready var advances_value_label = %Advances/ValueLabel
+
+@onready var natural_resources_container = %NaturalResources/Container
+
 
 #
 # -- 12 optional built-in virtual _init method
@@ -27,6 +30,7 @@ extends Node
 # -- 14 built-in virtual _ready method
 func _ready():
 	data_manager.total_population_value_changed.connect(_on_populate_value_changed)
+	data_manager.natural_resource_gained.connect(_on_natural_resource_gained)
 	data_manager.agriculture_value_changed.connect(_on_agriculture_value_changed)
 	data_manager.grain_changed.connect(_on_grain_changed)
 	data_manager.gold_changed.connect(_on_gold_changed)
@@ -41,6 +45,12 @@ func _ready():
 # -- 18 signal listeners
 func _on_populate_value_changed(value: int):
 	population_value_label.text = str(value)
+	
+	
+func _on_natural_resource_gained(value: Dictionary):
+	var label = Label.new()
+	label.text = value.name
+	natural_resources_container.add_child(label)
 	
 
 func _on_agriculture_value_changed(value: int):

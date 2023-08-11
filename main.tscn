@@ -91,6 +91,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "SetupPhaseButton"
 
+[node name="ResourcePhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "ResourcePhaseButton"
+
 [node name="PupulationIncreasePhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -104,95 +110,113 @@ size_flags_horizontal = 8
 script = ExtResource("14_bmd2b")
 data_manager = NodePath("../../../DataManager")
 
-[node name="Population" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+[node name="Population" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population"]
+layout_mode = 2
+
+[node name="Population" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Population"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Population"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Population"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Agriculture" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+[node name="Agriculture" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Agriculture"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Agriculture"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Agriculture"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Agriculture"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Agriculture"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Grain" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+[node name="Grain" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Grain"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Grain"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Grain"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Grain"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Grain"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Gold" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+[node name="Gold" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Gold"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Gold"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Gold"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Gold"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Gold"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Leaders" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+[node name="Leaders" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Leaders"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Leaders"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Leaders"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Leaders"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Leaders"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Advances" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+[node name="Advances" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Advances"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Advances"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Advances"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Advances"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Advances"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
+[node name="NaturalResources" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/NaturalResources"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/DataUI/NaturalResources/Container"]
+layout_mode = 2
+text = "Natural Resources"
+
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/SetupPhaseButton" to="GameManager" method="phase_setup"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ResourcePhaseButton" to="GameManager" method="phase_resource"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PupulationIncreasePhaseButton" to="GameManager" method="phase_population_increase"]
