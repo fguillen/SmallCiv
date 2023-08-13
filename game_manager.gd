@@ -21,7 +21,7 @@ var turn := 0
 @onready var setup_manager : SetupManager = $SetupManager
 @onready var gain_culture_manager : GainCultureManager = $GainCultureManager
 @onready var population_increase_manager : PopulationIncreaseManager = $PopulationIncreaseManager
-@onready var resource_manager = $ResourceManager
+@onready var gain_resource_manager = $GainResourceManager
 @onready var population_distribution_manager : PopulationDistributionManager= $PopulationDistributionManager
 @onready var gain_leader_manager : GainLeaderManager = $GainLeaderManager
 @onready var harvest_manager : HarvestManager = $HarvestManager
@@ -52,7 +52,7 @@ func phase_population_increase():
 	
 	
 func phase_resource():
-	resource_manager.perform()
+	gain_resource_manager.perform()
 	
 	
 func phase_population_distribution():
@@ -102,7 +102,7 @@ func _setup():
 	setup_manager.setup(self)
 	gain_culture_manager.setup(self)
 	population_increase_manager.setup(self)
-	resource_manager.setup(self)
+	gain_resource_manager.setup(self)
 	population_distribution_manager.setup(self)
 	gain_leader_manager.setup(self)
 	harvest_manager.setup(self)

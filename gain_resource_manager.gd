@@ -1,6 +1,6 @@
 # -- 01 @tool
 # -- 02 class_name
-class_name ResourceManager
+class_name GainResourceManager
 # -- 03 extends
 extends PhaseManager
 

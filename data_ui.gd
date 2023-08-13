@@ -18,10 +18,9 @@ extends Node
 @onready var agriculture_value_label = %Agriculture/ValueLabel
 @onready var grain_value_label = %Grain/ValueLabel
 @onready var gold_value_label = %Gold/ValueLabel
-@onready var leaders_value_label = %Leaders/ValueLabel
-@onready var advances_value_label = %Advances/ValueLabel
 
 @onready var natural_resources_container = %NaturalResources/Container
+@onready var leaders_container = %Leaders/Container
 
 
 #
@@ -31,9 +30,11 @@ extends Node
 func _ready():
 	data_manager.total_population_value_changed.connect(_on_populate_value_changed)
 	data_manager.natural_resource_gained.connect(_on_natural_resource_gained)
+	
 	data_manager.agriculture_value_changed.connect(_on_agriculture_value_changed)
 	data_manager.grain_changed.connect(_on_grain_changed)
 	data_manager.gold_changed.connect(_on_gold_changed)
+	
 	data_manager.leader_gained.connect(_on_leader_gained)
 	data_manager.advance_gained.connect(_on_advance_gained)
 	
@@ -65,12 +66,15 @@ func _on_gold_changed(value: int):
 	gold_value_label.text = str(value)
 	
 	
-func _on_leader_gained(leader: Dictionary):
-	leaders_value_label.text += ", " + leader.kind
+func _on_leader_gained(value: Dictionary):
+	var label = Label.new()
+	label.text = value.kind
+	leaders_container.add_child(label)
 	
 	
 func _on_advance_gained(advance: Dictionary):
-	advances_value_label.text += ", " + advance.name
+#	advances_value_label.text += ", " + advance.name
+	pass
 
 
 # -- 19 innerclasses

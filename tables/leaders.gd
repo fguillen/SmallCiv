@@ -10,16 +10,16 @@ extends Resource
 # -- 05 signals
 # -- 06 enums
 # -- 07 constants
-const DATA = {
-	1 : {
+const DATA = [
+	{
 		"kind" : "Rules",
 		"effect" : "Gold: +1d6 per turn"
 	},
-	2 : {
+	{
 		"kind" : "General",
 		"effect" : "Battle: +1roll"
 	}
-}
+]
 
 # -- 08 exported variables
 # -- 09 public variables

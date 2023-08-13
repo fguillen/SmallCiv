@@ -21,15 +21,16 @@ extends PhaseManager
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform():
-	var die_roll = DiceRoller.roll("1d6")
+	var die_roll = DiceRoller.roll("1d6").result
 	if [1, 2].has(die_roll):
 		_gain_leader()
 		
 		
 # -- 17 private methods
 func _gain_leader():
-	var die_roll = DiceRoller.roll("1d%d" % LeadersTable.DATA.size())
-	var leader = LeadersTable.DATA.get(die_roll)
+	print("XXX: GainLeaderManager._gain_leader()")
+	var die_roll = DiceRoller.roll("1d%d" % LeadersTable.DATA.size()).result
+	var leader = LeadersTable.DATA[die_roll - 1]
 	_data_manager.gain_leader(leader)
 		
 # -- 18 signal listeners
