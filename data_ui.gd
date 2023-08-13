@@ -18,6 +18,11 @@ extends Node
 
 @onready var population_value_label = %Population/ValueLabel
 @onready var agriculture_value_label = %Agriculture/ValueLabel
+@onready var army_value_label = %Army/ValueLabel
+@onready var trade_value_label = %Trade/ValueLabel
+@onready var labor_value_label = %Labor/ValueLabel
+@onready var scholars_value_label = %Scholars/ValueLabel
+
 @onready var grain_value_label = %Grain/ValueLabel
 @onready var gold_value_label = %Gold/ValueLabel
 
@@ -37,6 +42,12 @@ func _ready():
 	data_manager.natural_resource_gained.connect(_on_natural_resource_gained)
 	
 	data_manager.agriculture_value_changed.connect(_on_agriculture_value_changed)
+	data_manager.army_value_changed.connect(_on_army_value_changed)
+	data_manager.trade_value_changed.connect(_on_trade_value_changed)
+	data_manager.labor_value_changed.connect(_on_labor_value_changed)
+	data_manager.scholars_value_changed.connect(_on_scholars_value_changed)
+	
+	
 	data_manager.grain_changed.connect(_on_grain_changed)
 	data_manager.gold_changed.connect(_on_gold_changed)
 	
@@ -65,6 +76,22 @@ func _on_natural_resource_gained(value: Dictionary):
 
 func _on_agriculture_value_changed(value: int):
 	agriculture_value_label.text = str(value)
+	
+
+func _on_army_value_changed(value: int):
+	army_value_label.text = str(value)
+	
+	
+func _on_trade_value_changed(value: int):
+	trade_value_label.text = str(value)
+	
+	
+func _on_labor_value_changed(value: int):
+	labor_value_label.text = str(value)
+	
+	
+func _on_scholars_value_changed(value: int):
+	scholars_value_label.text = str(value)
 	
 	
 func _on_grain_changed(value: int):

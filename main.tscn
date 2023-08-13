@@ -181,6 +181,70 @@ size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
+[node name="Army" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Army"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Army
+"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Army"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[node name="Trade" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Trade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Trade
+"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Trade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[node name="Labor" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Labor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Labor
+"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Labor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
+[node name="Scholars" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Scholars"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scholars
+"
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Scholars"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "000"
+horizontal_alignment = 2
+
 [node name="Grain" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
