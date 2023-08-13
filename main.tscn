@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://es707xdjqxjo"]
+[gd_scene load_steps=20 format=3 uid="uid://es707xdjqxjo"]
 
 [ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_8fnln"]
 [ext_resource type="Script" path="res://data_manager.gd" id="2_x8r2w"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" path="res://disaster_manager.gd" id="11_u2ago"]
 [ext_resource type="Script" path="res://income_manager.gd" id="12_c4jc5"]
 [ext_resource type="Script" path="res://data_ui.gd" id="14_bmd2b"]
+[ext_resource type="Script" path="res://population_ui.gd" id="17_wb4yp"]
+[ext_resource type="PackedScene" uid="uid://dygxb6uryqmyd" path="res://population_category_ui.tscn" id="18_0layq"]
+[ext_resource type="Script" path="res://population_dragger.gd" id="19_iqw37"]
 
 [node name="Main" type="Node2D"]
 
@@ -145,131 +148,126 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Culture"]
 layout_mode = 2
 
-[node name="Population" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+[node name="PopulationUI" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI" node_paths=PackedStringArray("_data_manager")]
+layout_mode = 2
+script = ExtResource("17_wb4yp")
+_data_manager = NodePath("../../../../DataManager")
+
+[node name="PopulationDragger" type="Node2D" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI"]
+position = Vector2(-77, 125)
+script = ExtResource("19_iqw37")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/PopulationDragger"]
+scale = Vector2(0.0586207, 0.0586207)
+texture = ExtResource("1_8fnln")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population"]
-layout_mode = 2
-
-[node name="Population" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+[node name="Population" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Population"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Population"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Population"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Population"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Population"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Agriculture" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+[node name="Agriculture" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer" instance=ExtResource("18_0layq")]
 unique_name_in_owner = true
 layout_mode = 2
+category = "agriculture"
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Agriculture"]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="TitleLabel" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Agriculture" index="0"]
 text = "Agriculture"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Agriculture"]
+[node name="Army" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer" instance=ExtResource("18_0layq")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "000"
-horizontal_alignment = 2
+category = "army"
 
-[node name="Army" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+[node name="TitleLabel" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army" index="0"]
+text = "Army"
+
+[node name="Trade" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Army"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Army
-"
-
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Army"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "000"
-horizontal_alignment = 2
-
-[node name="Trade" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Trade"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Trade"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Trade
 "
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Trade"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Trade"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Labor" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+[node name="Labor" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Labor"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Labor
 "
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Labor"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Scholars" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+[node name="Scholars" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Scholars"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Scholars
 "
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Scholars"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Grain" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+[node name="Grain" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Grain"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Grain"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Grain"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Grain"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Grain"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
 horizontal_alignment = 2
 
-[node name="Gold" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer"]
+[node name="Gold" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Gold"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Gold"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Gold"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Population/VBoxContainer/Gold"]
+[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Gold"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "000"
@@ -315,3 +313,10 @@ text = "Advances"
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HarvestPhaseButton" to="GameManager" method="phase_harvest"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ResearchPhaseButton" to="GameManager" method="phase_research"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/IncomePhaseButton" to="GameManager" method="phase_income"]
+[connection signal="population_drag_finished" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Agriculture" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="finish_dragging"]
+[connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Agriculture" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
+[connection signal="population_drag_finished" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="finish_dragging"]
+[connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
+
+[editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Agriculture"]
+[editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army"]
