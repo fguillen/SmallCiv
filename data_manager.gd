@@ -163,8 +163,8 @@ func get_labor() -> int:
 	return _population.labor
 	
 	
-func get_schoolars() -> int:
-	return _population.schoolars
+func get_scholars() -> int:
+	return _population.scholars
 	
 	
 func get_leaders() -> Array:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://es707xdjqxjo"]
+[gd_scene load_steps=17 format=3 uid="uid://es707xdjqxjo"]
 
 [ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_8fnln"]
 [ext_resource type="Script" path="res://data_manager.gd" id="2_x8r2w"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://harvest_manager.gd" id="7_82km4"]
 [ext_resource type="Script" path="res://upkeep_manager.gd" id="10_sqvek"]
 [ext_resource type="Script" path="res://research_manager.gd" id="11_66r1r"]
+[ext_resource type="Script" path="res://disaster_manager.gd" id="11_u2ago"]
 [ext_resource type="Script" path="res://income_manager.gd" id="12_c4jc5"]
 [ext_resource type="Script" path="res://data_ui.gd" id="14_bmd2b"]
 
@@ -50,6 +51,9 @@ script = ExtResource("6_ch6ho")
 
 [node name="HarvestManager" type="Node" parent="GameManager"]
 script = ExtResource("7_82km4")
+
+[node name="DisasterManager_WIP" type="Node" parent="GameManager"]
+script = ExtResource("11_u2ago")
 
 [node name="UpkeepManager" type="Node" parent="GameManager"]
 script = ExtResource("10_sqvek")
@@ -114,6 +118,12 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "HarvestPhaseButton"
+
+[node name="ResearchPhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "ResearchPhaseButton"
 
 [node name="DataUI" type="VBoxContainer" parent="CanvasLayer/MarginContainer" node_paths=PackedStringArray("data_manager")]
 custom_minimum_size = Vector2(200, 0)
@@ -210,8 +220,20 @@ layout_mode = 2
 layout_mode = 2
 text = "Leaders"
 
+[node name="Advances" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/Advances"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Advances/Container"]
+layout_mode = 2
+text = "Advances"
+
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/SetupPhaseButton" to="GameManager" method="phase_setup"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/GainResourcePhaseButton" to="GameManager" method="phase_resource"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PupulationIncreasePhaseButton" to="GameManager" method="phase_population_increase"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/GainLeaderPhaseButton" to="GameManager" method="phase_gain_leader"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HarvestPhaseButton" to="GameManager" method="phase_harvest"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ResearchPhaseButton" to="GameManager" method="phase_research"]

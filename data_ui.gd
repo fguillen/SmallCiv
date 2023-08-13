@@ -21,6 +21,7 @@ extends Node
 
 @onready var natural_resources_container = %NaturalResources/Container
 @onready var leaders_container = %Leaders/Container
+@onready var advances_container = %Advances/Container
 
 
 #
@@ -72,9 +73,10 @@ func _on_leader_gained(value: Dictionary):
 	leaders_container.add_child(label)
 	
 	
-func _on_advance_gained(advance: Dictionary):
-#	advances_value_label.text += ", " + advance.name
-	pass
+func _on_advance_gained(value: Dictionary):
+	var label = Label.new()
+	label.text = value.name
+	advances_container.add_child(label)
 
 
 # -- 19 innerclasses

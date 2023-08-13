@@ -20,23 +20,23 @@ extends PhaseManager
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform():
-	var num_scholars = _data_manager.get_schoolars()
-	var num_thinkers = _data_manager.get_schoolars()
+	var num_scholars = _data_manager.get_scholars()
+	var num_thinkers = _data_manager.get_leaders_by_kind("Thinker").size()
 	# TODO: Add research generators
+	# TODO: pay 20 gold during the Research Phase to gain a random roll on the Advance Table.
 	
-	var num_rolls = num_scholars + num_thinkers
+	var num_rolls = num_scholars + num_thinkers + 1 # TODO: remove this 1
 	
 	for i in num_rolls:
-		var dice_roll = DiceRoller.roll("1d12")
+		var dice_roll = DiceRoller.roll("1d12").result
 		if dice_roll == 1:
 			_gain_random_advance()
 			
 
-
 # -- 17 private methods
 func _gain_random_advance():
-	# TODO: if 1d3 == 3 pick_one
-	var die_roll = DiceRoller.roll("1d%d" % AdvancesTable.DATA.size())
+	# TODO: If you roll one you already have, pick one instead.
+	var die_roll = DiceRoller.roll("1d%d" % AdvancesTable.DATA.size()).result
 	var advance = AdvancesTable.DATA[die_roll-1]
 	_data_manager.gain_advance(advance)
 	
