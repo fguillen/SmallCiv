@@ -14,6 +14,8 @@ extends Node
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
+@onready var culture_label = %Culture/Label
+
 @onready var population_value_label = %Population/ValueLabel
 @onready var agriculture_value_label = %Agriculture/ValueLabel
 @onready var grain_value_label = %Grain/ValueLabel
@@ -29,6 +31,8 @@ extends Node
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
+	data_manager.culture_set.connect(_on_culture_set)
+	
 	data_manager.total_population_value_changed.connect(_on_populate_value_changed)
 	data_manager.natural_resource_gained.connect(_on_natural_resource_gained)
 	
@@ -45,6 +49,10 @@ func _ready():
 	
 # -- 17 private methods
 # -- 18 signal listeners
+func _on_culture_set(value: Dictionary):
+	culture_label.text = value.name
+
+
 func _on_populate_value_changed(value: int):
 	population_value_label.text = str(value)
 	

@@ -138,6 +138,13 @@ size_flags_horizontal = 8
 script = ExtResource("14_bmd2b")
 data_manager = NodePath("../../../DataManager")
 
+[node name="Culture" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Culture"]
+layout_mode = 2
+
 [node name="Population" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
 layout_mode = 2
 

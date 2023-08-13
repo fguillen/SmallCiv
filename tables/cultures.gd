@@ -10,68 +10,68 @@ extends Resource
 # -- 05 signals
 # -- 06 enums
 # -- 07 constants
-const DATA = {
-	1: {
+const DATA = [
+	{
 		"name": "Egyptian",
 		"advance": "Engineering"
 	},
-	2: {
+	{
 		"name": "Mesopotamian",
 		"advance": "Mathematics"
 	},
-	3: {
+	{
 		"name": "Athenian",
 		"advance": "Philosophy"
 	},
-	4: {
+	{
 		"name": "Roman",
 		"advance": "Law"
 	},
-	5: {
+	{
 		"name": "Minoan",
 		"advance": "Music"
 	},
-	6: {
+	{
 		"name": "Persian",
 		"advance": "Coinage"
 	},
-	7: {
+	{
 		"name": "Assyrian",
 		"advance": "Metal Working"
 	},
-	8: {
+	{
 		"name": "Babylonian",
 		"advance": "Astronomy"
 	},
-	9: {
+	{
 		"name": "Mycenaean",
 		"advance": "Pottery"
 	},
-	10: {
+	{
 		"name": "Phoenician",
 		"advance": "Navigation"
 	},
-	11: {
+	{
 		"name": "Spartan",
 		"advance": "Military Doctrine"
 	},
-	12: {
+	{
 		"name": "Scythian",
 		"advance": "Equestrian"
 	},
-	13: {
+	{
 		"name": "Sumerian",
 		"advance": "Irrigation"
 	},
-	14: {
+	{
 		"name": "Celtic",
 		"advance": "Art"
 	},
-	15: {
+	{
 		"name": "Hebrews",
 		"advance": "Monotheism"
 	}
-}
+]
 
 # -- 08 exported variables
 # -- 09 public variables
