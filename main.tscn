@@ -9,14 +9,14 @@
 [ext_resource type="Script" path="res://dice_roller.gd" id="5_5bo2o"]
 [ext_resource type="Script" path="res://gain_leader_manager.gd" id="6_ch6ho"]
 [ext_resource type="Script" path="res://population_distribution_manager.gd" id="6_tpvay"]
-[ext_resource type="Script" path="res://resource_manager.gd" id="7_65p88"]
+[ext_resource type="Script" path="res://gain_resource_manager.gd" id="7_2vqfd"]
 [ext_resource type="Script" path="res://harvest_manager.gd" id="7_82km4"]
 [ext_resource type="Script" path="res://upkeep_manager.gd" id="10_sqvek"]
 [ext_resource type="Script" path="res://research_manager.gd" id="11_66r1r"]
 [ext_resource type="Script" path="res://income_manager.gd" id="12_c4jc5"]
 [ext_resource type="Script" path="res://data_ui.gd" id="14_bmd2b"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 [node name="Icon2" type="Sprite2D" parent="."]
 position = Vector2(539, 282)
@@ -39,8 +39,8 @@ script = ExtResource("4_0bpci")
 [node name="PopulationIncreaseManager" type="Node" parent="GameManager"]
 script = ExtResource("4_rux1o")
 
-[node name="ResourceManager" type="Node" parent="GameManager"]
-script = ExtResource("7_65p88")
+[node name="GainResourceManager" type="Node" parent="GameManager"]
+script = ExtResource("7_2vqfd")
 
 [node name="PopulationDistributionManager" type="Node" parent="GameManager"]
 script = ExtResource("6_tpvay")
@@ -91,11 +91,11 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "SetupPhaseButton"
 
-[node name="ResourcePhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="GainResourcePhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-text = "ResourcePhaseButton"
+text = "GainResourcePhaseButton"
 
 [node name="PupulationIncreasePhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -218,5 +218,5 @@ layout_mode = 2
 text = "Natural Resources"
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/SetupPhaseButton" to="GameManager" method="phase_setup"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ResourcePhaseButton" to="GameManager" method="phase_resource"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/GainResourcePhaseButton" to="GameManager" method="phase_resource"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PupulationIncreasePhaseButton" to="GameManager" method="phase_population_increase"]
