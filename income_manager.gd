@@ -20,7 +20,7 @@ extends PhaseManager
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func perform():
-	var num_trade = _data_manager.get_trade()
+	var num_trade = _data_manager.get_trade() + 1 # TODO: remove 1
 	# TODO: add cities, and Luxury Resources
 	
 	_data_manager.modify_gold(num_trade)

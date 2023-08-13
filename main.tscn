@@ -125,6 +125,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "ResearchPhaseButton"
 
+[node name="IncomePhaseButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "IncomePhaseButton"
+
 [node name="DataUI" type="VBoxContainer" parent="CanvasLayer/MarginContainer" node_paths=PackedStringArray("data_manager")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -237,3 +243,4 @@ text = "Advances"
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/GainLeaderPhaseButton" to="GameManager" method="phase_gain_leader"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HarvestPhaseButton" to="GameManager" method="phase_harvest"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ResearchPhaseButton" to="GameManager" method="phase_research"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/IncomePhaseButton" to="GameManager" method="phase_income"]
