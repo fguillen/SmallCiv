@@ -25,6 +25,7 @@ extends Node
 
 @onready var grain_value_label = %Grain/ValueLabel
 @onready var gold_value_label = %Gold/ValueLabel
+@onready var labor_points_value_label = %LaborPoints/ValueLabel
 
 @onready var natural_resources_container = %NaturalResources/Container
 @onready var leaders_container = %Leaders/Container
@@ -50,6 +51,7 @@ func _ready():
 	
 	data_manager.grain_changed.connect(_on_grain_changed)
 	data_manager.gold_changed.connect(_on_gold_changed)
+	data_manager.labor_points_changed.connect(_on_labor_points_changed)
 	
 	data_manager.leader_gained.connect(_on_leader_gained)
 	data_manager.advance_gained.connect(_on_advance_gained)
@@ -100,6 +102,11 @@ func _on_grain_changed(value: int):
 
 func _on_gold_changed(value: int):
 	gold_value_label.text = str(value)
+	
+	
+func _on_labor_points_changed(value: int):
+	print("XXX: _on_labor_points_changed: ", value)
+	labor_points_value_label.text = str(value)
 	
 	
 func _on_leader_gained(value: Dictionary):

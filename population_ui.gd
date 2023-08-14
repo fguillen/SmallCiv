@@ -1,5 +1,4 @@
 # -- 01 @tool
-@tool
 # -- 02 class_name
 class_name PopulationUI
 
@@ -27,13 +26,13 @@ extends PanelContainer
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
-func _get_configuration_warnings():
-	print("XXX: _get_configuration_warnings()")
-	var result = []
-	if !_data_manager:
-		result.append("DataManager no set")
-		
-	return result
+#func _get_configuration_warnings():
+#	print("XXX: _get_configuration_warnings()")
+#	var result = []
+#	if !_data_manager:
+#		result.append("DataManager no set")
+#
+#	return result
 		
 		
 # -- 16 public methods

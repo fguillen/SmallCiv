@@ -24,6 +24,7 @@ signal leader_removed(leader: Dictionary)
 
 signal grain_changed(value: int)
 signal gold_changed(value: int)
+signal labor_points_changed(value: int)
 
 signal advance_gained(advance: Dictionary)
 
@@ -44,6 +45,8 @@ var _population := {
 	"labor" = 0,
 	"scholars" = 0
 }
+
+var _labor_points := 0
 
 var _natural_resources : Array[Dictionary]
 var _manufactured_resources : Array[Dictionary]
@@ -111,7 +114,6 @@ func modify_scholars(amount: int):
 	_population.scholars += amount
 	scholars_value_changed.emit(_population.scholars)
 	
-	
 func modify_grain(amount: int):
 	_grain += amount
 	grain_changed.emit(_grain)
@@ -120,6 +122,12 @@ func modify_grain(amount: int):
 func modify_gold(amount: int):
 	_gold += amount
 	gold_changed.emit(_gold)
+
+
+func modify_labor_points(amount: int):
+	_labor_points += amount
+	print("XXX: _labor_points: ", _labor_points)
+	labor_points_changed.emit(_labor_points)	
 	
 	
 func gain_natural_resource(natural_resource: Dictionary):
@@ -160,7 +168,7 @@ func get_trade() -> int:
 	
 	
 func get_labor() -> int:
-	return _population.labor
+	return _population.labor	
 	
 	
 func get_scholars() -> int:
@@ -169,8 +177,21 @@ func get_scholars() -> int:
 	
 func get_leaders() -> Array:
 	return _leaders
+
+
+func get_grain() -> int:
+	return _grain
+	
+
+func get_gold() -> int:
+	return _gold	
 	
 	
+func get_labor_points() -> int:
+	return _labor_points
+	
+
+
 func get_leaders_by_kind(kind: String) -> Array[Dictionary]:
 	return _leaders.filter(func(e): return e.kind == kind)
 	

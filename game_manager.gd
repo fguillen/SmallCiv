@@ -28,9 +28,10 @@ var turn := 0
 @onready var upkeep_manager : UpkeepManager = $UpkeepManager
 @onready var trade_manager_wip = $TradeManager_WIP
 @onready var war_manager_wip = $WarManager_WIP
-@onready var build_manager_wip = $BuildManager_WIP
+@onready var build_manager = $BuildManager
 @onready var research_manager : ResearchManager = $ResearchManager
 @onready var income_manager : IncomeManager = $IncomeManager
+@onready var end_of_turn_manager = $EndOfTurnManager
 
 
 
@@ -85,7 +86,7 @@ func phase_trade():
 	
 	
 func phase_build():
-	pass
+	build_manager.perform()
 	
 	
 func phase_research():
@@ -94,6 +95,10 @@ func phase_research():
 	
 func phase_income():
 	income_manager.perform()
+	
+	
+func phase_end_of_turn():
+	end_of_turn_manager.perform()
 	
 	
 
@@ -109,9 +114,10 @@ func _setup():
 	upkeep_manager.setup(self)
 #	trade_manager_wip.setup(self)
 #	war_manager_wip.setup(self)
-#	build_manager_wip.setup(self)
+	build_manager.setup(self)
 	research_manager.setup(self)
 	income_manager.setup(self)
+	end_of_turn_manager.setup(self)
 	
 # -- 18 signal listeners
 # -- 19 innerclasses
