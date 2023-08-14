@@ -195,53 +195,29 @@ category = "army"
 [node name="TitleLabel" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army" index="0"]
 text = "Army"
 
-[node name="Trade" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
+[node name="Trade" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer" instance=ExtResource("18_0layq")]
 unique_name_in_owner = true
 layout_mode = 2
+category = "trade"
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Trade"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Trade
-"
+[node name="TitleLabel" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Trade" index="0"]
+text = "Trade"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Trade"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "000"
-horizontal_alignment = 2
-
-[node name="Labor" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
+[node name="Labor" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer" instance=ExtResource("18_0layq")]
 unique_name_in_owner = true
 layout_mode = 2
+category = "labor"
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Labor
-"
+[node name="TitleLabel" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor" index="0"]
+text = "Labor"
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "000"
-horizontal_alignment = 2
-
-[node name="Scholars" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
+[node name="Scholars" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer" instance=ExtResource("18_0layq")]
 unique_name_in_owner = true
 layout_mode = 2
+category = "scholars"
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Scholars
-"
-
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "000"
-horizontal_alignment = 2
+[node name="TitleLabel" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars" index="0"]
+text = "Scholars"
 
 [node name="Grain" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer"]
 unique_name_in_owner = true
@@ -317,6 +293,15 @@ text = "Advances"
 [connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Agriculture" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
 [connection signal="population_drag_finished" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="finish_dragging"]
 [connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
+[connection signal="population_drag_finished" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Trade" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="finish_dragging"]
+[connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Trade" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
+[connection signal="population_drag_finished" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="finish_dragging"]
+[connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
+[connection signal="population_drag_finished" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="finish_dragging"]
+[connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
 
 [editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Agriculture"]
 [editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army"]
+[editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Trade"]
+[editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor"]
+[editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars"]
