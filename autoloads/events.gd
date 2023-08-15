@@ -6,6 +6,8 @@ extends Node
 # -- 04 # docstring
 #
 # -- 05 signals
+
+# Data
 signal culture_set(value: String)
 
 signal total_population_value_changed(value: int)
@@ -28,6 +30,11 @@ signal gold_changed(value: int)
 signal labor_points_changed(value: int)
 
 signal advance_gained(advance: Dictionary)
+
+
+# UI
+signal labor_points_to_city_requested(city: City, value: int)
+
 
 # -- 06 enums
 # -- 07 constants

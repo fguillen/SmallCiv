@@ -42,6 +42,9 @@ var turn := 0
 func _ready():
 	_setup.call_deferred()
 	
+	# UI
+	Events.labor_points_to_city_requested.connect(_on_labor_points_to_city_requested)
+	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 func phase_setup():
@@ -123,6 +126,10 @@ func _setup():
 	income_manager.setup(self)
 	end_of_turn_manager.setup(self)
 	
+	
 # -- 18 signal listeners
+func _on_labor_points_to_city_requested(city: City, value: int):
+	city.add_labor_points_contructed(value)
+	data_manager.modify_labor_points(-value)
 # -- 19 innerclasses
 

@@ -33,7 +33,7 @@ func setup(city: City):
 # -- 17 private methods
 # -- 18 signal listeners
 func _on_use_labor_button_pressed():
-	_city.add_labor_points_contructed(1)
+	Events.labor_points_to_city_requested.emit(_city, 1)
 	
 
 func _on_labor_points_constructed_changed(value: int):
