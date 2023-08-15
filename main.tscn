@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://es707xdjqxjo"]
+[gd_scene load_steps=24 format=3 uid="uid://es707xdjqxjo"]
 
 [ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_8fnln"]
 [ext_resource type="Script" path="res://data_manager.gd" id="2_x8r2w"]
@@ -21,6 +21,8 @@
 [ext_resource type="Script" path="res://population_ui.gd" id="17_wb4yp"]
 [ext_resource type="PackedScene" uid="uid://dygxb6uryqmyd" path="res://population_category_ui.tscn" id="18_0layq"]
 [ext_resource type="Script" path="res://population_dragger.gd" id="19_iqw37"]
+[ext_resource type="Script" path="res://cities_ui.gd" id="22_mq87k"]
+[ext_resource type="PackedScene" uid="uid://bknhg25qejuny" path="res://city_ui.tscn" id="23_dcm5y"]
 
 [node name="Main" type="Node2D"]
 
@@ -29,7 +31,7 @@ position = Vector2(539, 282)
 scale = Vector2(0.12069, 0.12069)
 texture = ExtResource("1_8fnln")
 
-[node name="DataManager" type="Node2D" parent="."]
+[node name="DataManager" type="Node" parent="."]
 script = ExtResource("2_x8r2w")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("data_manager")]
@@ -158,12 +160,11 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "EndOfTurnPhaseButton"
 
-[node name="DataUI" type="VBoxContainer" parent="CanvasLayer/MarginContainer" node_paths=PackedStringArray("data_manager")]
+[node name="DataUI" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 script = ExtResource("14_bmd2b")
-data_manager = NodePath("../../../DataManager")
 
 [node name="Culture" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
 unique_name_in_owner = true
@@ -172,10 +173,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/DataUI/Culture"]
 layout_mode = 2
 
-[node name="PopulationUI" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI" node_paths=PackedStringArray("_data_manager")]
+[node name="PopulationUI" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
 layout_mode = 2
 script = ExtResource("17_wb4yp")
-_data_manager = NodePath("../../../../DataManager")
 
 [node name="PopulationDragger" type="Node2D" parent="CanvasLayer/MarginContainer/DataUI/PopulationUI"]
 position = Vector2(-77, 125)
@@ -329,6 +329,8 @@ text = "Advances"
 
 [node name="CitiesUI" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI"]
 layout_mode = 2
+script = ExtResource("22_mq87k")
+city_ui_template = ExtResource("23_dcm5y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI"]
 layout_mode = 2
@@ -338,155 +340,13 @@ layout_mode = 2
 text = "Cities
 "
 
-[node name="LaborAvailable" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/LaborAvailable"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Labor available"
-
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/LaborAvailable"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "000"
-
 [node name="AddCityButton" type="Button" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer"]
 layout_mode = 2
 text = "Build City (25 Gold)"
 
 [node name="CitiesContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="CityUI" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("1_8fnln")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="State" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/State"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "State
-"
-
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/State"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "In construction"
-
-[node name="ConstructionProgress" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/ConstructionProgress"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Construction progress
-"
-
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/ConstructionProgress"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "20/50"
-
-[node name="Labor" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Labor"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Labor
-"
-
-[node name="UserLaborButton" type="Button" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Labor"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Use 1 Labor
-"
-
-[node name="Wonder" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="WonderContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer"]
-layout_mode = 2
-text = "Wonder"
-
-[node name="BuildWonderButton" type="Button" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer"]
-layout_mode = 2
-text = "Build Wonder (100 Gold)"
-
-[node name="WonderUI" type="PanelContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI"]
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("1_8fnln")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="NameLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
-layout_mode = 2
-text = "Colossus"
-
-[node name="State" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/State"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "State
-"
-
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/State"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "In construction"
-
-[node name="ConstructionProgress" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/ConstructionProgress"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Construction progress
-"
-
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/ConstructionProgress"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "20/50"
-
-[node name="Labor" type="HBoxContainer" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/Labor"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Labor
-"
-
-[node name="UserLaborButton" type="Button" parent="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/CitiesContainer/CityUI/VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/Labor"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Use 1 Labor
-"
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/SetupPhaseButton" to="GameManager" method="phase_setup"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/GainResourcePhaseButton" to="GameManager" method="phase_resource"]
@@ -508,6 +368,7 @@ text = "Use 1 Labor
 [connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Labor" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
 [connection signal="population_drag_finished" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="finish_dragging"]
 [connection signal="population_drag_started" from="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Scholars" to="CanvasLayer/MarginContainer/DataUI/PopulationUI" method="start_dragging"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/DataUI/CitiesUI/VBoxContainer/AddCityButton" to="GameManager" method="build_city"]
 
 [editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Agriculture"]
 [editable path="CanvasLayer/MarginContainer/DataUI/PopulationUI/VBoxContainer/Army"]

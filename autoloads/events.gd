@@ -6,6 +6,8 @@ extends Node
 # -- 04 # docstring
 #
 # -- 05 signals
+signal culture_set(value: String)
+
 signal total_population_value_changed(value: int)
 signal agriculture_value_changed(value: int)
 signal army_value_changed(value: int)
@@ -13,13 +15,19 @@ signal trade_value_changed(value: int)
 signal labor_value_changed(value: int)
 signal scholars_value_changed(value: int)
 
-signal lider_gained(leader: Dictionary)
-signal lider_removed(leader: Dictionary)
+signal natural_resource_gained(natural_resource: Dictionary)
+signal manufactured_resource_gained(manufactured_resource: Dictionary)
+
+signal leader_gained(leader: Dictionary)
+signal leader_removed(leader: Dictionary)
+
+signal city_built(city: City)
 
 signal grain_changed(value: int)
 signal gold_changed(value: int)
+signal labor_points_changed(value: int)
 
-signal advance_added(advance: Dictionary)
+signal advance_gained(advance: Dictionary)
 
 # -- 06 enums
 # -- 07 constants

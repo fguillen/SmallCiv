@@ -28,7 +28,7 @@ var turn := 0
 @onready var upkeep_manager : UpkeepManager = $UpkeepManager
 @onready var trade_manager_wip = $TradeManager_WIP
 @onready var war_manager_wip = $WarManager_WIP
-@onready var build_manager = $BuildManager
+@onready var build_manager : BuildManager = $BuildManager
 @onready var research_manager : ResearchManager = $ResearchManager
 @onready var income_manager : IncomeManager = $IncomeManager
 @onready var end_of_turn_manager = $EndOfTurnManager
@@ -101,6 +101,9 @@ func phase_end_of_turn():
 	end_of_turn_manager.perform()
 	
 	
+func build_city():
+	build_manager.build_city()
+	
 
 # -- 17 private methods
 func _setup():
@@ -111,6 +114,7 @@ func _setup():
 	population_distribution_manager.setup(self)
 	gain_leader_manager.setup(self)
 	harvest_manager.setup(self)
+#	disaster_manager.setup(self)
 	upkeep_manager.setup(self)
 #	trade_manager_wip.setup(self)
 #	war_manager_wip.setup(self)

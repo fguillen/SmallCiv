@@ -16,7 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GlobalEventManager="*res://autoloads/global_event_manager.tscn"
+Events="*res://autoloads/events.gd"
 
 [display]
 

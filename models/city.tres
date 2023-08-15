@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://2if33wudxm6m"]
+
+[ext_resource type="Script" path="res://models/city.gd" id="1_rcl4d"]
+
+[resource]
+script = ExtResource("1_rcl4d")

@@ -2,32 +2,11 @@
 # -- 02 class_name
 class_name DataManager
 # -- 03 extends
-extends Node2D
+extends Node
 
 # -- 04 # docstring
 #
 # -- 05 signals
-signal culture_set(value: String)
-
-signal total_population_value_changed(value: int)
-signal agriculture_value_changed(value: int)
-signal army_value_changed(value: int)
-signal trade_value_changed(value: int)
-signal labor_value_changed(value: int)
-signal scholars_value_changed(value: int)
-
-signal natural_resource_gained(natural_resource: Dictionary)
-signal manufactured_resource_gained(manufactured_resource: Dictionary)
-
-signal leader_gained(leader: Dictionary)
-signal leader_removed(leader: Dictionary)
-
-signal grain_changed(value: int)
-signal gold_changed(value: int)
-signal labor_points_changed(value: int)
-
-signal advance_gained(advance: Dictionary)
-
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
@@ -52,6 +31,7 @@ var _natural_resources : Array[Dictionary]
 var _manufactured_resources : Array[Dictionary]
 var _leaders : Array[Dictionary]
 var _advances : Array[Dictionary]
+var _cities : Array[City]
 
 
 var _grain := 0
@@ -67,13 +47,13 @@ var _gold := 0
 # -- 16 public methods
 func set_culture(value: Dictionary):
 	_culture = value
-	culture_set.emit(value)
+	Events.culture_set.emit(value)
 	
 	
 func increase_population(amount: int):
 	_total_population += amount
 	modify("agriculture", amount)
-	total_population_value_changed.emit(_total_population)
+	Events.total_population_value_changed.emit(_total_population)
 	
 
 func modify(category: String, amount: int):
@@ -92,63 +72,68 @@ func modify(category: String, amount: int):
 
 func modify_agriculture(amount: int):
 	_population.agriculture += amount
-	agriculture_value_changed.emit(_population.agriculture)
+	Events.agriculture_value_changed.emit(_population.agriculture)
 	
 
 func modify_army(amount: int):
 	_population.army += amount
-	army_value_changed.emit(_population.army)
+	Events.army_value_changed.emit(_population.army)
 
 
 func modify_trade(amount: int):
 	_population.trade += amount
-	trade_value_changed.emit(_population.trade)
+	Events.trade_value_changed.emit(_population.trade)
 	
 	
 func modify_labor(amount: int):
 	_population.labor += amount
-	labor_value_changed.emit(_population.labor)
+	Events.labor_value_changed.emit(_population.labor)
 	
 	
 func modify_scholars(amount: int):
 	_population.scholars += amount
-	scholars_value_changed.emit(_population.scholars)
+	Events.scholars_value_changed.emit(_population.scholars)
 	
 func modify_grain(amount: int):
 	_grain += amount
-	grain_changed.emit(_grain)
+	Events.grain_changed.emit(_grain)
 	
 
 func modify_gold(amount: int):
 	_gold += amount
-	gold_changed.emit(_gold)
+	Events.gold_changed.emit(_gold)
 
 
 func modify_labor_points(amount: int):
 	_labor_points += amount
 	print("XXX: _labor_points: ", _labor_points)
-	labor_points_changed.emit(_labor_points)	
+	Events.labor_points_changed.emit(_labor_points)	
 	
 	
 func gain_natural_resource(natural_resource: Dictionary):
 	print("XXX: gain_natural_resource: ", natural_resource)
 	_natural_resources.append(natural_resource)
-	natural_resource_gained.emit(natural_resource)
+	Events.natural_resource_gained.emit(natural_resource)
 	
 
 func gain_manufactured_resource(manufactured_resource: Dictionary):
 	_manufactured_resources.append(manufactured_resource)
-	manufactured_resource_gained.emit(manufactured_resource)
+	Events.manufactured_resource_gained.emit(manufactured_resource)
 
 
 func gain_leader(leader: Dictionary):
 	_leaders.append(leader)
-	leader_gained.emit(leader)
+	Events.leader_gained.emit(leader)
 	
 	
 func gain_advance(advance: Dictionary):
 	_advances.append(advance)
-	advance_gained.emit(advance)
+	Events.advance_gained.emit(advance)
+	
+
+func add_city(city: City):
+	_cities.append(city)
+	Events.city_built.emit(city)
 	
 
 func get_total_population() -> int:

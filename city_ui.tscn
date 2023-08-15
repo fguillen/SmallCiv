@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://bknhg25qejuny"]
+
+[ext_resource type="Script" path="res://city_ui.gd" id="1_bhwxn"]
+[ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_bxqhu"]
+
+[node name="CityUI" type="PanelContainer"]
+script = ExtResource("1_bhwxn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_bxqhu")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="State" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/State"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "State
+"
+
+[node name="ValueLabel" type="Label" parent="VBoxContainer/State"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "In construction"
+
+[node name="ConstructionProgress" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/ConstructionProgress"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Construction progress
+"
+
+[node name="ValueLabel" type="Label" parent="VBoxContainer/ConstructionProgress"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "20/50"
+
+[node name="Labor" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/Labor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Labor
+"
+
+[node name="UseLaborButton" type="Button" parent="VBoxContainer/Labor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Use 1 Labor
+"
+
+[node name="Wonder" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="WonderContainer" type="VBoxContainer" parent="VBoxContainer/Wonder"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/Wonder/WonderContainer"]
+layout_mode = 2
+text = "Wonder"
+
+[node name="BuildWonderButton" type="Button" parent="VBoxContainer/Wonder/WonderContainer"]
+layout_mode = 2
+text = "Build Wonder (100 Gold)"
+
+[node name="WonderUI" type="PanelContainer" parent="VBoxContainer/Wonder/WonderContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Wonder/WonderContainer/WonderUI"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_bxqhu")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
+layout_mode = 2
+text = "Colossus"
+
+[node name="State" type="HBoxContainer" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/State"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "State
+"
+
+[node name="ValueLabel" type="Label" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/State"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "In construction"
+
+[node name="ConstructionProgress" type="HBoxContainer" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/ConstructionProgress"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Construction progress
+"
+
+[node name="ValueLabel" type="Label" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/ConstructionProgress"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "20/50"
+
+[node name="Labor" type="HBoxContainer" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/Labor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Labor
+"
+
+[node name="UserLaborButton" type="Button" parent="VBoxContainer/Wonder/WonderContainer/WonderUI/VBoxContainer/Labor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Use 1 Labor
+"
+
+[connection signal="pressed" from="VBoxContainer/Labor/UseLaborButton" to="." method="_on_use_labor_button_pressed"]

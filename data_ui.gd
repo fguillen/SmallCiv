@@ -10,7 +10,6 @@ extends Node
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
-@export var data_manager : DataManager
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
@@ -37,24 +36,24 @@ extends Node
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
-	data_manager.culture_set.connect(_on_culture_set)
+	Events.culture_set.connect(_on_culture_set)
 	
-	data_manager.total_population_value_changed.connect(_on_populate_value_changed)
-	data_manager.natural_resource_gained.connect(_on_natural_resource_gained)
+	Events.total_population_value_changed.connect(_on_populate_value_changed)
+	Events.natural_resource_gained.connect(_on_natural_resource_gained)
 	
-	data_manager.agriculture_value_changed.connect(_on_agriculture_value_changed)
-	data_manager.army_value_changed.connect(_on_army_value_changed)
-	data_manager.trade_value_changed.connect(_on_trade_value_changed)
-	data_manager.labor_value_changed.connect(_on_labor_value_changed)
-	data_manager.scholars_value_changed.connect(_on_scholars_value_changed)
+	Events.agriculture_value_changed.connect(_on_agriculture_value_changed)
+	Events.army_value_changed.connect(_on_army_value_changed)
+	Events.trade_value_changed.connect(_on_trade_value_changed)
+	Events.labor_value_changed.connect(_on_labor_value_changed)
+	Events.scholars_value_changed.connect(_on_scholars_value_changed)
 	
 	
-	data_manager.grain_changed.connect(_on_grain_changed)
-	data_manager.gold_changed.connect(_on_gold_changed)
-	data_manager.labor_points_changed.connect(_on_labor_points_changed)
+	Events.grain_changed.connect(_on_grain_changed)
+	Events.gold_changed.connect(_on_gold_changed)
+	Events.labor_points_changed.connect(_on_labor_points_changed)
 	
-	data_manager.leader_gained.connect(_on_leader_gained)
-	data_manager.advance_gained.connect(_on_advance_gained)
+	Events.leader_gained.connect(_on_leader_gained)
+	Events.advance_gained.connect(_on_advance_gained)
 	
 	
 # -- 15 remaining built-in virtual methods
