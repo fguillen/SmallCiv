@@ -59,7 +59,7 @@ script = ExtResource("6_ch6ho")
 [node name="HarvestManager" type="Node" parent="GameManager"]
 script = ExtResource("7_82km4")
 
-[node name="DisasterManager_WIP" type="Node" parent="GameManager"]
+[node name="DisasterManager" type="Node" parent="GameManager"]
 script = ExtResource("11_u2ago")
 
 [node name="UpkeepManager" type="Node" parent="GameManager"]

@@ -3,7 +3,7 @@
 class_name DisasterManager
 
 # -- 03 extends
-extends Node
+extends PhaseManager
 
 # -- 04 # docstring
 #
@@ -20,7 +20,20 @@ extends Node
 # -- 14 built-in virtual _ready method
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
+func perform():
+	var dice_roll = DiceRoller.roll("1d6").result
+	if dice_roll == 1:
+		_execute_disaster()
+
+
 # -- 17 private methods
+func _execute_disaster():
+	var die_roll = DiceRoller.roll("1d%d" % DisastersTable.DATA.size()).result
+	var disaster = DisastersTable.DATA[die_roll-1]
+	
+	
+	
+
 # -- 18 signal listeners
 # -- 19 innerclasses
 
