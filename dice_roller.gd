@@ -9,6 +9,8 @@ extends Node2D
 # -- 05 signals
 # -- 06 enums
 # -- 07 constants
+const PATTERN = "(\\d+)[Dd](\\d+)([+-])?(\\d+)?"
+
 # -- 08 exported variables
 # -- 09 public variables
 # -- 10 private variables
@@ -25,7 +27,7 @@ extends Node2D
 # -- 16 public methods
 static func roll(configuration: String) -> Dictionary:
 	var regex = RegEx.new()
-	regex.compile("(\\d+)[Dd](\\d+)([+-])?(\\d+)?")
+	regex.compile(PATTERN)
 	var regex_result = regex.search(configuration)
 	var num_dice = int(regex_result.strings[1])
 	var dice_value = int(regex_result.strings[2])

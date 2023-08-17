@@ -15,8 +15,6 @@ extends Node
 
 var _culture : Dictionary
 
-var _total_population := 0
-
 var _population := {
 	"agriculture" = 0,
 	"army" = 0,
@@ -51,9 +49,8 @@ func set_culture(value: Dictionary):
 	
 	
 func increase_population(amount: int):
-	_total_population += amount
 	modify("agriculture", amount)
-	Events.total_population_value_changed.emit(_total_population)
+	
 	
 
 func modify(category: String, amount: int):
@@ -73,26 +70,32 @@ func modify(category: String, amount: int):
 func modify_agriculture(amount: int):
 	_population.agriculture += amount
 	Events.agriculture_value_changed.emit(_population.agriculture)
+	_total_population_changed()
 	
 
 func modify_army(amount: int):
 	_population.army += amount
 	Events.army_value_changed.emit(_population.army)
+	_total_population_changed()
 
 
 func modify_trade(amount: int):
 	_population.trade += amount
 	Events.trade_value_changed.emit(_population.trade)
+	_total_population_changed()
 	
 	
 func modify_labor(amount: int):
 	_population.labor += amount
 	Events.labor_value_changed.emit(_population.labor)
+	_total_population_changed()
 	
 	
 func modify_scholars(amount: int):
 	_population.scholars += amount
 	Events.scholars_value_changed.emit(_population.scholars)
+	_total_population_changed()
+	
 	
 func modify_grain(amount: int):
 	_grain += amount
@@ -137,7 +140,15 @@ func add_city(city: City):
 	
 
 func get_total_population() -> int:
-	return _total_population
+	var result = 0
+	for value in _population.values():
+		result += value
+		
+	return result
+	
+
+func get_population() -> Dictionary:
+	return _population
 	
 
 func get_agriculture() -> int:
@@ -180,7 +191,10 @@ func get_labor_points() -> int:
 func get_leaders_by_kind(kind: String) -> Array[Dictionary]:
 	return _leaders.filter(func(e): return e.kind == kind)
 	
+	
 # -- 17 private methods
+func _total_population_changed():
+	Events.total_population_value_changed.emit(get_total_population())
 # -- 18 signal listeners
 # -- 19 innerclasses
 

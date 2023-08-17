@@ -25,6 +25,7 @@ var turn := 0
 @onready var population_distribution_manager : PopulationDistributionManager= $PopulationDistributionManager
 @onready var gain_leader_manager : GainLeaderManager = $GainLeaderManager
 @onready var harvest_manager : HarvestManager = $HarvestManager
+@onready var disaster_manager = $DisasterManager
 @onready var upkeep_manager : UpkeepManager = $UpkeepManager
 @onready var trade_manager_wip = $TradeManager_WIP
 @onready var war_manager_wip = $WarManager_WIP
@@ -71,9 +72,8 @@ func phase_harvest():
 	harvest_manager.perform()
 	
 
-func phase_disaster_check():
-	pass
-	# TODO
+func phase_disaster():
+	disaster_manager.perform()
 	
 
 func phase_upkeep():
@@ -117,7 +117,7 @@ func _setup():
 	population_distribution_manager.setup(self)
 	gain_leader_manager.setup(self)
 	harvest_manager.setup(self)
-#	disaster_manager.setup(self)
+	disaster_manager.setup(self)
 	upkeep_manager.setup(self)
 #	trade_manager_wip.setup(self)
 #	war_manager_wip.setup(self)
