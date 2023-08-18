@@ -169,10 +169,6 @@ func get_labor() -> int:
 	
 func get_scholars() -> int:
 	return _population.scholars
-	
-	
-func get_leaders() -> Array:
-	return _leaders
 
 
 func get_grain() -> int:
@@ -186,11 +182,45 @@ func get_gold() -> int:
 func get_labor_points() -> int:
 	return _labor_points
 	
+	
+func get_leaders() -> Array:
+	return _leaders
 
 
 func get_leaders_by_kind(kind: String) -> Array[Dictionary]:
 	return _leaders.filter(func(e): return e.kind == kind)
 	
+
+func has_leader(kind: String):
+	return get_leaders_by_kind(kind).size() > 0
+
+
+
+func get_advances() -> Array:
+	return _advances
+
+
+func get_advances_by_name(p_name: String) -> Array[Dictionary]:
+	return _advances.filter(func(e): return e.name == p_name)
+	
+
+func has_advance(p_name: String):
+	return get_advances_by_name(p_name).size() > 0
+	
+
+
+func get_natural_resources() -> Array:
+	return _natural_resources
+
+
+func get_natural_resources_by_name(p_name: String) -> Array[Dictionary]:
+	return _natural_resources.filter(func(e): return e.name == p_name)
+	
+
+func has_natural_resource(p_name: String):
+	return get_natural_resources_by_name(p_name).size() > 0
+
+
 	
 # -- 17 private methods
 func _total_population_changed():

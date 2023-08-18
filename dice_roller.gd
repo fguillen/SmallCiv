@@ -36,16 +36,16 @@ static func roll(configuration: String) -> Dictionary:
 	
 	var result = {}
 	result["result"] = 0
-	result["dice"] = []
+	result["rolls"] = []
 	result["num_dice"] = num_dice
 	result["dice_value"] = dice_value
 	result["bonus_operator"] = bonus_operator
 	result["bonus_value"] = bonus_value
 	
 	for i in num_dice:
-		var die_roll = randi_range(1, dice_value)
-		result.dice.append(die_roll)
-		result.result += die_roll
+		var roll_result = randi_range(1, dice_value)
+		result.rolls.append(roll_result)
+		result.result += roll_result
 	
 	if bonus_operator == "+":
 		result.result += bonus_value

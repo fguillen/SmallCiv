@@ -27,8 +27,8 @@ var turn := 0
 @onready var harvest_manager : HarvestManager = $HarvestManager
 @onready var disaster_manager = $DisasterManager
 @onready var upkeep_manager : UpkeepManager = $UpkeepManager
+@onready var war_manager : WarManager = $WarManager
 @onready var trade_manager_wip = $TradeManager_WIP
-@onready var war_manager_wip = $WarManager_WIP
 @onready var build_manager : BuildManager = $BuildManager
 @onready var research_manager : ResearchManager = $ResearchManager
 @onready var income_manager : IncomeManager = $IncomeManager
@@ -81,7 +81,7 @@ func phase_upkeep():
 	
 
 func phase_war():
-	pass
+	war_manager.perform_character_attack_random_army()
 	
 	
 func phase_trade():
@@ -120,7 +120,7 @@ func _setup():
 	disaster_manager.setup(self)
 	upkeep_manager.setup(self)
 #	trade_manager_wip.setup(self)
-#	war_manager_wip.setup(self)
+	war_manager.setup(self)
 	build_manager.setup(self)
 	research_manager.setup(self)
 	income_manager.setup(self)

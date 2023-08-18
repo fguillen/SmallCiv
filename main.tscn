@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://es707xdjqxjo"]
+[gd_scene load_steps=25 format=3 uid="uid://es707xdjqxjo"]
 
 [ext_resource type="Texture2D" uid="uid://cgucfa2s25358" path="res://icon.png" id="1_8fnln"]
 [ext_resource type="Script" path="res://data_manager.gd" id="2_x8r2w"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://research_manager.gd" id="11_66r1r"]
 [ext_resource type="Script" path="res://disaster_manager.gd" id="11_u2ago"]
 [ext_resource type="Script" path="res://income_manager.gd" id="12_c4jc5"]
+[ext_resource type="Script" path="res://war_manager.gd" id="13_o67sd"]
 [ext_resource type="Script" path="res://build_manager.gd" id="13_s1yt4"]
 [ext_resource type="Script" path="res://data_ui.gd" id="14_bmd2b"]
 [ext_resource type="Script" path="res://end_of_turn_manager.gd" id="16_8bcpv"]
@@ -67,7 +68,8 @@ script = ExtResource("10_sqvek")
 
 [node name="TradeManager_WIP" type="Node" parent="GameManager"]
 
-[node name="WarManager_WIP" type="Node" parent="GameManager"]
+[node name="WarManager" type="Node" parent="GameManager"]
+script = ExtResource("13_o67sd")
 
 [node name="BuildManager" type="Node" parent="GameManager"]
 script = ExtResource("13_s1yt4")
@@ -141,6 +143,12 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "UpkeepPhaseButton"
+
+[node name="WarPhaseButton" type="Button" parent="CanvasLayer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "WarPhaseButton"
 
 [node name="BuildPhaseButton" type="Button" parent="CanvasLayer/MarginContainer/Buttons"]
 layout_mode = 2
@@ -361,6 +369,7 @@ layout_mode = 2
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/HarvestPhaseButton" to="GameManager" method="phase_harvest"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/DisasterPhaseButton" to="GameManager" method="phase_disaster"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/UpkeepPhaseButton" to="GameManager" method="phase_upkeep"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/WarPhaseButton" to="GameManager" method="phase_war"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/BuildPhaseButton" to="GameManager" method="phase_build"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/ResearchPhaseButton" to="GameManager" method="phase_research"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Buttons/IncomePhaseButton" to="GameManager" method="phase_income"]

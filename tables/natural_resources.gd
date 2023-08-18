@@ -21,7 +21,8 @@ const DATA = [
 	},
 	{
 		"name": "Iron", 
-		"benefit": "Military; Requires Bronze"
+		"benefit": "Military",
+		"requires": "Bronze"
 	},
 	{
 		"name": "Horses", 
